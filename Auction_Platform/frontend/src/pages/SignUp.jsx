@@ -1,7 +1,7 @@
 import { register } from "@/store/slices/userSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -40,8 +40,8 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigateTo("/");
+    if (loading) {
+      navigateTo("/login");
     }
   }, [dispatch, loading, isAuthenticated]);
 
@@ -199,13 +199,22 @@ const SignUp = () => {
         )}
 
         {/* Register Button */}
-        <button
+        <button 
           className="bg-[#00246B] text-white font-semibold text-lg py-3 px-6 rounded-lg hover:bg-[#8AB6F9] transition duration-300 w-full"
           type="submit"
           disabled={loading}
         >
           {loading ? "Registering..." : "Register"}
         </button>
+        <p className="text-lg text-[#00246B]">
+            You have an account?{" "}
+            <Link
+              to="/login"
+              className="text-[#d6482b] font-semibold hover:underline transition"
+            >
+              Login
+            </Link>
+          </p>
       </form>
     </div>
   </section>

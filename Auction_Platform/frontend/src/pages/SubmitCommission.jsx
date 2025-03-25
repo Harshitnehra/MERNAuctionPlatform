@@ -14,6 +14,7 @@ const SubmitCommission = () => {
 
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.commission);
+  const { user } = useSelector((state) => state.user);
 
   const handlePaymentProof = (e) => {
     e.preventDefault();
@@ -33,9 +34,32 @@ const SubmitCommission = () => {
 
   return (
     <>
-      <section className="bg-white w-full flex justify-center items-center px-5 mt-24 mb-16">
+      <section className="max-w-2xl mx-auto text-center mt-25 ">
+        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Why Upload Payment Proof?</h1>
+        <p className="text-lg text-gray-700 mt-4 hover:text-red-600 transition-colors duration-300">
+          Uploading your payment proof helps us verify your transaction and process your request efficiently. Ensure your screenshot is clear, includes the transaction details, and matches the provided amount. If any issues arise, our team will review your submission and get back to you.
+        </p>
+        <p className="text-lg text-gray-700 mt-4 hover:text-red-600 transition-colors duration-300">
+          If you encounter any difficulties, feel free to contact our support team. We appreciate your cooperation in making transactions smooth and secure!
+        </p>
+      </section>
+      
+      {/* User Details */}
+      <section className="flex flex-col items-center text-center mt-10">
+        <img
+          src={user?.profileImage?.url}
+          alt="Profile"
+          className="w-80 h-100 object-cover rounded-lg hover:scale-105 transition-transform duration-300 border-green-500 shadow-md
+"
+        />
+        <h2 className="text-2xl font-bold mt-4 text-gray-800">{user?.userName}</h2>
+        <p className="text-lg text-gray-600">📧 {user?.email}</p>
+        <p className="text-lg text-red-600 font-semibold">💰 Unpaid Commission: ${user?.unpaidCommission}</p>
+      </section>
+      
+      <section className="bg-white w-full flex justify-center items-center px-5 mt-15 mb-16">
         <div className="bg-white w-full max-w-2xl p-12 flex flex-col gap-8 items-center shadow-2xl rounded-2xl">
-          <h3 className="text-[#D6482B] text-3xl font-bold text-center">
+          <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 text-3xl font-bold text-center">
             Upload Payment Proof
           </h3>
           <form className="flex flex-col gap-6 w-full" onSubmit={handlePaymentProof}>
@@ -45,7 +69,7 @@ const SubmitCommission = () => {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D6482B] transition-all"
+                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
               />
             </div>
             <div className="flex flex-col gap-3">
@@ -53,7 +77,7 @@ const SubmitCommission = () => {
               <input
                 type="file"
                 onChange={proofHandler}
-                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D6482B] transition-all"
+                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
               />
             </div>
             <div className="flex flex-col gap-3">
@@ -62,11 +86,11 @@ const SubmitCommission = () => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 rows={6}
-                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D6482B] transition-all"
+                className="text-lg py-3 px-4 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
               />
             </div>
             <button
-              className="bg-[#D6482B] w-full text-white font-bold text-xl py-3 rounded-lg transition-all duration-300 hover:bg-[#b8381e] hover:shadow-lg"
+              className="bg-gradient-to-r from-orange-500 to-red-600 w-full text-white font-bold text-xl py-3 rounded-lg transition-all duration-300 hover:shadow-lg"
               type="submit"
             >
               {loading ? "Uploading..." : "Upload Payment Proof"}

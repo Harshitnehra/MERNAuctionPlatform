@@ -96,7 +96,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     success: true,
     message: "User registered successfully.",
   });
-  generateToken(user, "User Registered.", 201, res);
+  ( "User Registered.", 201, res);
 });
 
 

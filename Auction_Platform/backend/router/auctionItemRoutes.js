@@ -4,7 +4,7 @@ import {
     getAuctionDetails,
     getMyAuctionItems,
     removeFromAuction,
-    republishItem,
+    // republishItem,
   } from "../controllers/auctionItemController.js";
   import { isAuthenticated, isAuthorized } from "../middlewares/auth.js";
   import express from "express";
@@ -38,11 +38,11 @@ import {
     removeFromAuction
   );
   
-  router.put(
-    "/item/republish/:id",
-    isAuthenticated,
-    isAuthorized("Auctioneer"),
-    republishItem
-  );
+  // router.put(
+  //   "/item/republish/:id",
+  //   isAuthenticated,
+  //   isAuthorized("Auctioneer"),
+  //   republishItem
+  // );
   
   export default router;
