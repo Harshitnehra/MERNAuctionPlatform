@@ -133,6 +133,8 @@ export const login = catchAsyncErrors(async (req, res, next) => {
       })
       .json({
         success: true,
+         secure: true,
+          sameSite: "None"
         message: "Logout Successfully.",
       });
   });
