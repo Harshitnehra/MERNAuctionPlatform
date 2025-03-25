@@ -7,7 +7,7 @@ const auctionSchema = new mongoose.Schema({
   category: String,
   condition: {
     type: String,
-    enum: ["New", "Used"],
+    enum: ["New", "Used","Electronics"],
   },
   currentBid: { type: Number, default: 0 },
   startTime: { type: Date, required: true },
