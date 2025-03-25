@@ -127,8 +127,8 @@ const CreateAuction = () => {
               className="border p-2 rounded"
             >
               <option value="">Select Category</option>
-              <option value="Electronics">New</option>
-              <option value="Electronics">Used</option>
+              <option value="New">New</option>
+              <option value="Used">Used</option>
             </select>
 
             <label className="font-medium text-gray-700">Starting Bid</label>
